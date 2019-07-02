@@ -101,13 +101,13 @@ def neural_network_model(input_size):
     return model
     
 def train_model(training_data, model=False):
-    X = np.array(i[0] for i in training_data).reshape(-1, len(training_data[0][0]), 1)
+    X = np.array([i[0] for i in training_data]).reshape(-1, len(training_data[0][0]), 1)
     y = [i[1] for i in training_data]
     
     if not model:
         model = neural_network_model(input_size=len(X[0]))
     
-    model.fit({'input':X},{'targets' : Y}, n_epochs=3, snapshot_step=500, show_metric=True, run_id='openaicartpole')
+    model.fit({'input':X},{'targets' : y}, n_epoch=5, snapshot_step=500, show_metric=True, run_id='openaicartpole')
     
     return model
     
@@ -121,7 +121,7 @@ model = train_model(training_data)
 scores = []
 choices = []
 
-for each_game in range(100)
+for each_game in range(10):
     score = 0
     game_memory = []
     prev_obs = []
